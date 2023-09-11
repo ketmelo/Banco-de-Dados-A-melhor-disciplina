@@ -72,3 +72,8 @@ HAVING COUNT(*) > 2;
 SELECT livros.titulo, autores.nome AS autor_nome 
 FROM livros 
 INNER JOIN autores ON livros.autor_id = autores.id;
+
+
+SELECT alunos.nome, matriculas.curso AS nome_aluno
+FROM alunos
+INNER JOIN matriculas ON matriculas.aluno_id = alunos.id;
