@@ -38,3 +38,7 @@ CREATE TABLE matriculas (
  select nome from autores where nascimento < '1900-01-01';
 
  SELECT * FROM livros WHERE autor_id = 1;
+
+SELECT alunos.nome FROM  alunos
+ INNER JOIN matriculas ON alunos.id = matriculas.aluno_id
+ WHERE matriculas.curso = 'Engenharia de Software';
