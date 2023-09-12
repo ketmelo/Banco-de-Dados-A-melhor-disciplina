@@ -95,3 +95,7 @@ FROM autores
 JOIN livros ON autores.id = livros.autor_id
 GROUP BY autores.nome
 HAVING quantidade_de_livros > 1;
+
+SELECT produto
+FROM vendas
+WHERE receita = (SELECT MIN(receita) FROM vendas);
