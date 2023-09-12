@@ -99,3 +99,8 @@ HAVING quantidade_de_livros > 1;
 SELECT produto
 FROM vendas
 WHERE receita = (SELECT MIN(receita) FROM vendas);
+
+SELECT alunos.nome, COUNT(matriculas.id) AS numero_de_matriculas
+FROM alunos
+LEFT JOIN matriculas ON alunos.id = matriculas.aluno_id
+GROUP BY alunos.nome;
