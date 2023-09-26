@@ -243,3 +243,17 @@ BEGIN
     WHERE Categoria.Nome = nomeCategoria;
 END //
 DELIMITER ;
+
+DELIMITER //
+
+CREATE PROCEDURE sp_AutorMaisAntigo(OUT nomeAutorMaisAntigo VARCHAR(255))
+BEGIN
+    SELECT CONCAT(Nome, ' ', Sobrenome) INTO nomeAutorMaisAntigo
+    FROM Autor
+    WHERE Data_Nascimento = (
+        SELECT MIN(Data_Nascimento)
+        FROM Autor
+    );
+END //
+
+DELIMITER ;
