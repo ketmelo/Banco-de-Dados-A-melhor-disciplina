@@ -233,3 +233,13 @@ BEGIN
     WHERE Ano_Publicacao <= anoPublicacao;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_TitulosPorCategoria(IN nomeCategoria VARCHAR(100))
+BEGIN
+    SELECT Livro.Titulo
+    FROM Livro
+    INNER JOIN Categoria ON Livro.Categoria_ID = Categoria.Categoria_ID
+    WHERE Categoria.Nome = nomeCategoria;
+END //
+DELIMITER ;
