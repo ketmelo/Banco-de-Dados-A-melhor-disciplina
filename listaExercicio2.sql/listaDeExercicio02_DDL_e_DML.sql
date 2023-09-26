@@ -204,4 +204,23 @@ BEGIN
     INNER JOIN Categoria ON Livro.Categoria_ID = Categoria.Categoria_ID
     WHERE Categoria.Nome = nomeCategoria;
 END //
-DELIMITER 
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_VerificarLivrosCategoria(IN nomeCategoria VARCHAR(100), OUT possuiLivros BOOLEAN)
+BEGIN
+    DECLARE totalLivros INT;
+    
+    SELECT COUNT(*) INTO totalLivros
+    FROM Livro
+    INNER JOIN Categoria ON Livro.Categoria_ID = Categoria.Categoria_ID
+    WHERE Categoria.Nome = nomeCategoria;
+    
+    IF totalLivros > 0 THEN
+        SET possuiLivros = TRUE;
+    ELSE
+        SET possuiLivros = FALSE;
+    END IF;
+END //
+DELIMITER ;
+
