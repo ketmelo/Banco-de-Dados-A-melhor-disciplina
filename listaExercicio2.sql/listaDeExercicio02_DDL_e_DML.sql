@@ -287,3 +287,23 @@ END //
 
 DELIMITER ;
 
+DELIMITER //
+
+CREATE PROCEDURE sp_AutorMaisAntigo(OUT nomeAutorMaisAntigo VARCHAR(255))
+BEGIN
+
+    DECLARE dataMaisAntiga DATE;
+    
+    SELECT MIN(Data_Nascimento) INTO dataMaisAntiga FROM Autor;
+    
+
+    SELECT CONCAT(Nome, ' ', Sobrenome) INTO nomeAutorMaisAntigo
+    FROM Autor
+    WHERE Data_Nascimento = dataMaisAntiga;
+    
+
+END //
+
+DELIMITER ;
+
+
