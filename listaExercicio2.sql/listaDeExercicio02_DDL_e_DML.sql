@@ -195,3 +195,13 @@ BEGIN
     WHERE Categoria.Nome = nomeCategoria;
 END //
 DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE sp_ContarLivrosPorCategoria(IN nomeCategoria VARCHAR(100), OUT totalLivros INT)
+BEGIN
+    SELECT COUNT(*) INTO totalLivros
+    FROM Livro
+    INNER JOIN Categoria ON Livro.Categoria_ID = Categoria.Categoria_ID
+    WHERE Categoria.Nome = nomeCategoria;
+END //
+DELIMITER 
